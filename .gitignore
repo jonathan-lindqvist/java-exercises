@@ -1,0 +1,9 @@
+*.zip
+.idea
+out
+!week1/week1/src/exercises/
+week1/week1/week1.iml
+week1/week1.iml
+!week2/week2/src/exercises/
+week2/week2/week2.iml
+week2/week2.iml
