@@ -31,5 +31,28 @@ public class Ex1LoopPuzzlers {
             timesTodo++;
         }
 
+        for(int i = 1; i < 10; i++){
+            int rowTimes = 0;
+            while(rowTimes < i){
+                out.print("X");
+                rowTimes++;
+            }
+            out.println();
+        }
+
+
+        int nX = 5;
+        int spaces = 0;
+        for(int times = 0; times < 10; times++){
+            for(int i = 0; i < spaces; i++){
+                out.print(" ");
+            }
+            spaces++;
+            for(int j = 0; j < nX; j++){
+                out.print("X");
+            }
+            out.println("");
+        }
+
     }
 }
