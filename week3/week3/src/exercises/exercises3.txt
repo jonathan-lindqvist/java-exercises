@@ -48,11 +48,12 @@ Exercises
     complex, break down.
 
 3.  See Ex3Theory. Uncomment and run each section. Explain result. Write explanation here
-    1.
-    2.
-    3.
-    4.
-    5.
+    1. Types are not can not easily be converted, for example char '1' is int 1 but not the other way around. And double != int.
+       But ints and chars can become doubles.
+    2. The variables hold references to the arrays but not the actual values. So in the end all the variables have the same pointers.
+    3. Since int is a primitive type the value is attached to the actual variable but the other are references, and that is why the change.
+    4. The method returns a value, which is then assigned to the variable, they have different references, and that is why the last statement is false.
+    5. Because the overloading is done wrong, the methods are the same so it does not know what to pick. And then there is not a specific one for two ints.
 
 4.  See Ex4MedianKthSmallest. Implement methods that calculate the median and the kth smallest
     of an integer array. See comments.

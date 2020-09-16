@@ -41,13 +41,13 @@ public class Ex3Theory {
         int[] i2 = {10, 11, 12, 13, 14, 15};
         int[] i3 = i1;
 
-        out.println(i3[1]);
-        i3 = i2;
-        out.println(i3[1]);
-        i1 = i2;
-        out.println(i3[1]);
-        i3 = i1;
-        out.println(i3[1]);*/
+        out.println(i3[1]); // will print 2
+        i3 = i2; // change pointer to the i2 pointer (for reference)
+        out.println(i3[1]); // will print 11
+        i1 = i2; // once again changing pointers but for i1
+        out.println(i3[1]); // will print 11
+        i3 = i1; // i1 == i2 == i3
+        out.println(i3[1]); // will print 11*/
 
         // 3. What will be printed. Explain! (methods below) ----------------
         /*int a = 1;
