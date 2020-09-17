@@ -25,14 +25,45 @@ public class Ex5PointOfInequality {
         String[] s2 = {"a", "bb", "c", "d", "e"};
 
         // All should print true
-        //out.println(diffIndex(a1, a2) == 2);  // First index from left where they differ
-        //out.println(diffIndex(a1, a1) == -1); // No diff
-        //out.println(diffIndex(a0, a1) == -1);
-        //out.println(diffIndex(d1, d2) == 4);
-        //out.println(diffIndex(s1, s2) == 1);
+        out.println(diffIndex(a1, a2) == 2);  // First index from left where they differ
+        out.println(diffIndex(a1, a1) == -1); // No diff
+        out.println(diffIndex(a0, a1) == -1);
+        out.println(diffIndex(d1, d2) == 4);
+        out.println(diffIndex(s1, s2) == 1);
     }
 
     // ----------- Method(s) -----------------------
+    int diffIndex(int[] arr1, int[] arr2){
+        int diffIndex = -1;
+        int times = Math.min(arr1.length, arr2.length);
+        for(int index = 0; index < times; index++){
+            if(arr1[index] != arr2[index]){
+                diffIndex = index;
+            }
+        }
+        return diffIndex;
+    }
 
+    int diffIndex(double[] arr1, double[] arr2){
+        int diffIndex = -1;
+        int times = Math.min(arr1.length, arr2.length);
+        for(int index = 0; index < times; index++){
+            if(arr1[index] != arr2[index]){
+                diffIndex = index;
+            }
+        }
+        return diffIndex;
+    }
+
+    int diffIndex(String[] arr1, String[] arr2){
+        int diffIndex = -1;
+        int times = Math.min(arr1.length, arr2.length);
+        for(int index = 0; index < times; index++){
+            if(arr1[index] != arr2[index]){
+                diffIndex = index;
+            }
+        }
+        return diffIndex;
+    }
 
 }
