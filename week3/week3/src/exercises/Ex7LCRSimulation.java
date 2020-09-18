@@ -28,12 +28,31 @@ public class Ex7LCRSimulation {
         displayPlayers(players);
 
         // TODO Runt the simulation
-
+        boolean gameOver = false;
+        while(!gameOver){
+            String[] diceForActual = roll3dices();
+            out.println(Arrays.toString(diceForActual));
+            // TODO
+            /*
+            Give chips to other players depending on dice rolls
+            check for winner
+            update actual
+             */
+        }
     }
 
     // ---- Logical methods -----------------
 
     // TODO
+    String[] roll3dices(){
+        String[] dice = {".", ".", ".", "L", "C", "R"};
+        String first = dice[rand.nextInt(dice.length)];
+        String second = dice[rand.nextInt(dice.length)];
+        String third = dice[rand.nextInt(dice.length)];
+        String[] playersHand = {first, second, third};
+        return playersHand;
+
+    }
 
     // --- IO methods ------------------
 
