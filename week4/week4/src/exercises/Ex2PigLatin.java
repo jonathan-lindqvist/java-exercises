@@ -30,27 +30,28 @@ public class Ex2PigLatin {
 
     // TODO
     String toPigLatin(String str){
-        String[] strs = str.trim().split(" ");
-        for(int i = 0; i < strs.length; i++){
-            boolean consonantLetter = isFirstLetterConsonant(strs[i].toLowerCase().charAt(0));
-             if(consonantLetter){
-                 String firstLetter = strs[i].substring(0, 1);
-                 String restOfWord = strs[i].substring(1, strs[i].length());
-                strs[i] = restOfWord + firstLetter + "ay";
-             }else{
-                 strs[i] = strs[i] + "way";
-             }
-        }
-        String pigLatinWord = concatStringArray(strs);
-        return pigLatinWord;
-    }
+        String[] strs = str.split(" ");
+        StringBuilder sb = new StringBuilder();
 
-    String concatStringArray(String[] arr){
-        String word = "";
-        for(String i : arr){
-            word += i + " ";
+        for (String s : strs) {
+            boolean consonantLetter = isFirstLetterConsonant(s.toLowerCase().charAt(0));
+            int startAt = 0;
+            if (consonantLetter) {
+                startAt = 1;
+            }
+
+            char[] charArr = s.toCharArray();
+            for (int j = startAt; j < charArr.length; j++) {
+                sb.append(charArr[j]);
+            }
+
+            if (startAt == 1) {
+                sb.append(charArr[0]).append('a').append('y').append(' ');
+            } else {
+                sb.append('w').append('a').append('y').append(' ');
+            }
         }
-        return word.trim();
+        return sb.toString().trim();
     }
 
     boolean isFirstLetterConsonant(char letter){
