@@ -1,5 +1,7 @@
 package exercises;
 
+import java.util.Arrays;
+
 import static java.lang.System.out;
 
 /*
@@ -20,13 +22,35 @@ public class Ex2PigLatin {
     }
 
     void program() {
-      //  out.println(toPigLatin("My name is Eric")
-        //        .equals("yMay amenay isway Ericway"));
+        out.println(toPigLatin("My name is Eric")
+                .equals("yMay amenay isway Ericway"));
     }
 
     // ---------- Methods --------------------
 
     // TODO
+    String toPigLatin(String str){
+        String[] strs = str.trim().split(" ");
+        for(int i = 0; i < strs.length; i++){
+            boolean consonantLetter = isFirstLetterConsonant(strs[i].toLowerCase().charAt(0));
+             if(consonantLetter){
+                out.println("Hello world");
+             }
+        }
+        return "hello";
+    }
 
+    boolean isFirstLetterConsonant(char letter){
+        switch (letter) {
+            case 'a':
+            case 'e':
+            case 'i':
+            case 'o':
+            case 'u':
+                return false;
+            default:
+                return true;
+        }
+    }
 
 }
