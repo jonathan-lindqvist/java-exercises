@@ -1,5 +1,6 @@
 package exercises;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 import static java.lang.System.in;
@@ -19,19 +20,29 @@ public class Ex1WordCount {
     }
 
     void program() {
-        //out.println(countWords("") == 0);
-        //out.println(countWords("hello") == 1);
-        //out.println(countWords(" hello ") == 1);
-        //out.println(countWords("hello world") == 2);
-        //out.println(countWords("hello        world") == 2);
-        //out.println(countWords("   hello        world  ") == 2);
+        out.println(countWords("") == 0);
+        out.println(countWords("hello") == 1);
+        out.println(countWords(" hello ") == 1);
+        out.println(countWords("hello world") == 2);
+        out.println(countWords("hello        world") == 2);
+        out.println(countWords("   hello        world  ") == 2);
         String s = "Education is what remains after one has forgotten what one has learned in school.";
-        //out.println(countWords(s) == 14);
+        out.println(countWords(s) == 14);
 
     }
 
     //--------------- Methods -----------------
 
     // TODO
+    int countWords(String str){
+        String[] strs = str.trim().split(" ");
+        int count = 0;
+        for(int i = 0; i < strs.length; i++){
+            if(!strs[i].equals("") && !strs[i].equals(" ")){ // thought it should be "||" instead of "&&" but now it works...
+                count++;
+            }
+        }
 
+        return count;
+    }
 }
