@@ -34,10 +34,23 @@ public class Ex2PigLatin {
         for(int i = 0; i < strs.length; i++){
             boolean consonantLetter = isFirstLetterConsonant(strs[i].toLowerCase().charAt(0));
              if(consonantLetter){
-                out.println("Hello world");
+                 String firstLetter = strs[i].substring(0, 1);
+                 String restOfWord = strs[i].substring(1, strs[i].length());
+                strs[i] = restOfWord + firstLetter + "ay";
+             }else{
+                 strs[i] = strs[i] + "way";
              }
         }
-        return "hello";
+        String pigLatinWord = concatStringArray(strs);
+        return pigLatinWord;
+    }
+
+    String concatStringArray(String[] arr){
+        String word = "";
+        for(String i : arr){
+            word += i + " ";
+        }
+        return word.trim();
     }
 
     boolean isFirstLetterConsonant(char letter){
