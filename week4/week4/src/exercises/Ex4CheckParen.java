@@ -39,20 +39,29 @@ public class Ex4CheckParen {
     }
 
     // ----------- Methods -------------------------
-    boolean checkParentheses(String str){
-        Deque<String> sStack = new ArrayDeque<>();
-        // TODO
-        // Check current if there is a closing tag
-        // return boolean depending if there is a matching tag
-
-        return true;
+    boolean checkParentheses(String s){
+        Deque<Character> stack = new ArrayDeque<>();
+        char[] chars = s.toCharArray();
+        for (int i = 0; i < s.length(); i++){
+            if(stack.isEmpty()){
+                stack.push(chars[i]);
+            }else if(stack.peek() == matching(chars[i])){
+                stack.pop();
+            }else {
+                if (chars[i] == ' '){
+                    continue;
+                }
+                stack.push(chars[i]);
+            }
+        }
+        return stack.isEmpty();
     }
 
 
 
     // This is interesting because have to return, but what if no match?!?
     char matching(char ch) {
-        //char c =  must initialize but to what?!
+        char c =  ' ';
         switch (ch) {
             case ')':
                 return '(';  // c = '('
@@ -61,8 +70,7 @@ public class Ex4CheckParen {
             case '}':
                 return '{';
             default:
-                // return c;
-                throw new IllegalArgumentException("No match found");
+                return c;
         }
     }
 }
