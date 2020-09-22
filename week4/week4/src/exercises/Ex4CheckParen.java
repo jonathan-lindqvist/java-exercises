@@ -26,19 +26,27 @@ public class Ex4CheckParen {
 
     void program() {
         // All should be true
-        //out.println(checkParentheses("()"));
-        //out.println(checkParentheses("(()())"));
-        //out.println(!checkParentheses("(()))")); // Unbalanced
-        //out.println(!checkParentheses("((())")); // Unbalanced
+        out.println(checkParentheses("()"));
+        out.println(checkParentheses("(()())"));
+        out.println(!checkParentheses("(()))")); // Unbalanced
+        out.println(!checkParentheses("((())")); // Unbalanced
 
-        //out.println(checkParentheses("({})"));
-        //out.println(!checkParentheses("({)}"));  // Bad nesting
-        //out.println(checkParentheses("({} [()] ({}))"));
-        //out.println(!checkParentheses("({} [() ({)})"));  // Unbalanced and bad nesting
+        out.println(checkParentheses("({})"));
+        out.println(!checkParentheses("({)}"));  // Bad nesting
+        out.println(checkParentheses("({} [()] ({}))"));
+        out.println(!checkParentheses("({} [() ({)})"));  // Unbalanced and bad nesting
 
     }
 
     // ----------- Methods -------------------------
+    boolean checkParentheses(String str){
+        Deque<String> sStack = new ArrayDeque<>();
+        // TODO
+        // Check current if there is a closing tag
+        // return boolean depending if there is a matching tag
+
+        return true;
+    }
 
 
 
