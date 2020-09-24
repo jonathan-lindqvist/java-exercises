@@ -1,7 +1,9 @@
 package exercises;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import static java.lang.System.out;
 
@@ -55,10 +57,29 @@ public class Ex6SJT {
             // then invert dir for all values that are greater than the current largest mobile value
 
             int indexLargestMobile = getIndexOfLargestMobile(arr, dir);
+            //out.println(indexLargestMobile);
+            int swapIndex = dir[indexLargestMobile] ? indexLargestMobile + 1 : indexLargestMobile -1;
+            out.println(Arrays.toString(arr));
+            swap(arr, indexLargestMobile, swapIndex);
+            swap(dir, indexLargestMobile, swapIndex);
+
+            /*
+
+            try
+            {
+                Thread.sleep(1000);
+            }
+            catch(InterruptedException e)
+            {
+                // this part is executed when an exception (in this example InterruptedException) occurs
+            }
+             */
+
         }
 
         return permutations;
     }
+
     boolean gotMobiles(String[] arr, boolean[] dir){
         boolean anyMobile = false;
 
@@ -68,7 +89,7 @@ public class Ex6SJT {
 
         for(int i = 0; i < arr.length; i++){
             boolean dirForIndex = dir[i];
-            if(i-1 >= 0 && i+1 < arr.length){
+            if((dir[i] && i + 1 < arr.length) || (!dir[i] && i - 1 >= 0)){
                 int neighbourIndex = (dirForIndex) ? i+1 : i-1;
                 String neighbourValue = arr[neighbourIndex];
                 if(Integer.parseInt(arr[i]) > Integer.parseInt(neighbourValue)){
@@ -83,9 +104,33 @@ public class Ex6SJT {
     }
 
     int getIndexOfLargestMobile(String[] arr, boolean[] dir){
-        for(int i = 0; i < arr.length;i++){
-            
+        int indexLargest = 0;
+        int largestValue = Integer.MIN_VALUE;
+        for(int i = 0; i < arr.length; i++){
+            boolean dirForIndex = dir[i];
+            if((dir[i] && i + 1 < arr.length) || (!dir[i] && i - 1 >= 0)){
+                int neighbourIndex = (dirForIndex) ? i+1 : i-1;
+                String neighbourValue = arr[neighbourIndex];
+                if(Integer.parseInt(arr[i]) > Integer.parseInt(neighbourValue)){
+                    if(Integer.parseInt(arr[i]) > largestValue){
+                        indexLargest = i;
+                    }
+                }
+            }
+
         }
-        return 0;
+        return indexLargest;
+    }
+
+    void swap(String[] arr, int i1, int i2) {
+        String temp = arr[i1];
+        arr[i1] = arr[i2];
+        arr[i2] = temp;
+    }
+
+    void swap(boolean[] arr, int i1, int i2) {
+        boolean temp = arr[i1];
+        arr[i1] = arr[i2];
+        arr[i2] = temp;
     }
 }
