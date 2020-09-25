@@ -25,7 +25,7 @@ public class Ex7Permutations {
 
     void program() {
         List<String> ps = Arrays.asList("abc", "acb", "bac", "bca", "cab", "cba");
-        List<String> perms = null;  // Replace with perm("abc");
+        List<String> perms = perm("abc");
 
         // Some checks
         out.println(perms.size() == 6);
@@ -37,5 +37,29 @@ public class Ex7Permutations {
 
     // -------- Methods -----------
     // TODO
+    List<String> perm(String str){
+        List<String> allPerms = new ArrayList<>();
+        char[] arr = str.toCharArray();
+        getPerms(arr,);
+        return allPerms;
+    }
+
+    void getPerms(char[] a, int n) {
+        if (n == 1) {
+            out.println(new String(a));
+            return;
+        }
+        for (int i = 0; i < n; i++) {
+            swap(a, i, n-1);
+            getPerms(a, n-1);
+            swap(a, i, n-1);
+        }
+    }
+
+    void swap(char[] a, int i, int j) {
+        char c = a[i];
+        a[i] = a[j];
+        a[j] = c;
+    }
 
 }
