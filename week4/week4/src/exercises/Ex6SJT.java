@@ -59,10 +59,11 @@ public class Ex6SJT {
             int indexLargestMobile = getIndexOfLargestMobile(arr, dir);
             //out.println(indexLargestMobile);
             int swapIndex = dir[indexLargestMobile] ? indexLargestMobile + 1 : indexLargestMobile -1;
-            out.println(Arrays.toString(arr));
+            //out.println(Arrays.toString(arr));
             swap(arr, indexLargestMobile, swapIndex);
             swap(dir, indexLargestMobile, swapIndex);
-
+            permutations.add(stringArrToString(arr));
+            invertDirForValues(arr, dir, swapIndex);
             /*
 
             try
@@ -113,6 +114,7 @@ public class Ex6SJT {
                 String neighbourValue = arr[neighbourIndex];
                 if(Integer.parseInt(arr[i]) > Integer.parseInt(neighbourValue)){
                     if(Integer.parseInt(arr[i]) > largestValue){
+                        largestValue = Integer.parseInt(arr[i]);
                         indexLargest = i;
                     }
                 }
@@ -133,4 +135,22 @@ public class Ex6SJT {
         arr[i1] = arr[i2];
         arr[i2] = temp;
     }
+
+    String stringArrToString(String[] arr){
+        StringBuilder builder = new StringBuilder();
+        for(String s : arr) {
+            builder.append(s);
+        }
+        return builder.toString();
+    }
+
+    void invertDirForValues(String[] arr, boolean[] dir, int index) {
+        String value = arr[index];
+        for(int i = 0; i < arr.length; i++) {
+            if (Integer.parseInt(arr[i]) > Integer.parseInt(value)) {
+                dir[i] = !dir[i];
+            }
+        }
+    }
+
 }
