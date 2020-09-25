@@ -40,26 +40,27 @@ public class Ex7Permutations {
     List<String> perm(String str){
         List<String> allPerms = new ArrayList<>();
         char[] arr = str.toCharArray();
-        getPerms(arr,);
+        getPerms(arr,0, allPerms);
+        //out.println(allPerms);
         return allPerms;
     }
 
-    void getPerms(char[] a, int n) {
-        if (n == 1) {
-            out.println(new String(a));
-            return;
-        }
-        for (int i = 0; i < n; i++) {
-            swap(a, i, n-1);
-            getPerms(a, n-1);
-            swap(a, i, n-1);
-        }
+    void swap(char[] ch, int i, int j){
+        char temp = ch[i];
+        ch[i] = ch[j];
+        ch[j] = temp;
     }
 
-    void swap(char[] a, int i, int j) {
-        char c = a[i];
-        a[i] = a[j];
-        a[j] = c;
+    void getPerms(char[] ch, int currentIndex, List<String>perms){
+        if (currentIndex == ch.length - 1) {
+            perms.add(new String(ch));
+        }
+
+        for (int i = currentIndex; i < ch.length; i++){
+            swap(ch, currentIndex, i);
+            getPerms(ch, currentIndex + 1, perms);
+            swap(ch, currentIndex, i);
+        }
     }
 
 }
