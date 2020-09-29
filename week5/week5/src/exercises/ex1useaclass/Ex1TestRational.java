@@ -43,8 +43,8 @@ public class Ex1TestRational {
         out.println(r1.add(r2).equals(new Rational(3, 4)));
         out.println(r1.sub(r2).equals(new Rational(-1, 4)));
         out.println(r1.mul(r2).equals(new Rational(1, 8)));
-        /*
         out.println(r1.div(r2).equals(new Rational(1, 2)));
+        /*
 
         Rational r3 = new Rational(r1);
         out.println(r3.equals(r1));

@@ -88,6 +88,18 @@ public class Rational {
         return new Rational(newNum, newDenom);
     }
 
+    public Rational div(Rational other){
+        // prep with numbers
+        int otherNum = other.getNum();
+        int otherDenom = other.getDenom();
+
+        //Start logic for add below
+        int newDenom = denom * otherNum;
+        int newNum = num * otherDenom;
+
+        return new Rational(newNum, newDenom);
+    }
+
     private int commonDenom(int n1, int n2) {
         int gcd = 1;
         if(n1 < 0){
