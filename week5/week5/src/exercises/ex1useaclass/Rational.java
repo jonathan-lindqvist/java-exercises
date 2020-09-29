@@ -1,5 +1,7 @@
 package exercises.ex1useaclass;
 
+import java.util.Objects;
+
 import static java.lang.Math.abs;
 
 /*
@@ -46,7 +48,17 @@ public class Rational {
     }
 
     public Rational add(Rational other){
-        return null;
+        // Multiply with each denom on the other denom and num, because the constructor will short the result.
+        // prep with numbers
+        int otherNum = other.getNum();
+        int otherDenom = other.getDenom();
+
+        //Start logic for add below
+        int newDenom = denom * otherDenom;
+        int newNum = num * otherDenom;
+
+        int newOtherNum = otherNum * denom;
+        return new Rational(newNum+newOtherNum,  newDenom);
     }
 
     private int commonDenom(int n1, int n2) {
@@ -63,6 +75,20 @@ public class Rational {
             }
         }
         return gcd;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Rational rational = (Rational) o;
+        return num == rational.num &&
+                denom == rational.denom;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(num, denom);
     }
 }
 
