@@ -110,6 +110,10 @@ public class Rational {
         return value < otherValue;
     }
 
+    public double toDouble(){
+        return (double)num / (double)denom;
+    }
+
     private int commonDenom(int n1, int n2) {
         int gcd = 1;
         if(n1 < 0){
