@@ -38,6 +38,10 @@ public class Rational {
         this.num = num/gcd * mod;
         this.denom = denom/gcd * mod;
     }
+    public Rational(Rational other){
+        this.num = other.getNum();
+        this.denom = other.getDenom();
+    }
 
     public int getNum() {
         return num;
@@ -98,6 +102,12 @@ public class Rational {
         int newNum = num * otherDenom;
 
         return new Rational(newNum, newDenom);
+    }
+
+    public boolean lessThan(Rational other){
+        int value = num / denom;
+        int otherValue = other.getNum() / other.getDenom();
+        return value < otherValue;
     }
 
     private int commonDenom(int n1, int n2) {
