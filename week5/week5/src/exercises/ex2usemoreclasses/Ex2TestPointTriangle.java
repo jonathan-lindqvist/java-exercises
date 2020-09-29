@@ -20,11 +20,11 @@ public class Ex2TestPointTriangle {
 
     private void test() {
         // All should print true as usual
-        /*
         // Point
         Point p = new Point(1, 2, 3);
         out.println(p.distance(new Point(p)) == 0);
         out.println(new Point(0, 0, 0).distance(new Point(1, 0, 0)) == 1);
+        /*
 
         // Triangle uses Points!
         Triangle t = new Triangle(new Point(0, 0, 0), new Point(0, 1, 0), new Point(1, 0, 0));
