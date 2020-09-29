@@ -49,7 +49,6 @@ public class Ex1TestRational {
         out.println(r3.equals(r1));
         out.println(!r3.lessThan(r1));
         out.println(abs(r3.toDouble() - 0.25) < 0.000001);
-        /*
 
         List<Rational> rList = new ArrayList<>();
         rList.add(new Rational(2, 3));
@@ -60,8 +59,6 @@ public class Ex1TestRational {
         out.println(complexMsg.get(new Rational(1,1)).equals("one"));
 
         out.println(new Rational(6, 1).toString().equals("6 / 1"));
-
-         */
     }
 }
     

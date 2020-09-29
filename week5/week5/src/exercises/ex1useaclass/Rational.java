@@ -114,6 +114,10 @@ public class Rational {
         return (double)num / (double)denom;
     }
 
+    public String toString() {
+        return num +" / " + denom;
+    }
+
     private int commonDenom(int n1, int n2) {
         int gcd = 1;
         if(n1 < 0){
