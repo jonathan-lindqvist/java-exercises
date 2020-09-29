@@ -61,6 +61,21 @@ public class Rational {
         return new Rational(newNum+newOtherNum,  newDenom);
     }
 
+    public Rational sub(Rational other){
+        // Multiply with each denom on the other denom and num, because the constructor will short the result.
+        // prep with numbers
+        int otherNum = other.getNum();
+        int otherDenom = other.getDenom();
+
+        //Start logic for add below
+        int newDenom = denom * otherDenom;
+        int newNum = num * otherDenom;
+
+        int newOtherNum = otherNum * denom;
+
+        return new Rational(newNum-newOtherNum, newDenom);
+    }
+
     private int commonDenom(int n1, int n2) {
         int gcd = 1;
         if(n1 < 0){
