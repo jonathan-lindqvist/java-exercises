@@ -76,6 +76,18 @@ public class Rational {
         return new Rational(newNum-newOtherNum, newDenom);
     }
 
+    public Rational mul(Rational other){
+        // prep with numbers
+        int otherNum = other.getNum();
+        int otherDenom = other.getDenom();
+
+        //Start logic for add below
+        int newDenom = denom * otherDenom;
+        int newNum = num * otherNum;
+
+        return new Rational(newNum, newDenom);
+    }
+
     private int commonDenom(int n1, int n2) {
         int gcd = 1;
         if(n1 < 0){
