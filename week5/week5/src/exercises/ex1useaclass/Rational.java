@@ -26,12 +26,15 @@ public class Rational {
     }
 
     public Rational(int num, int denom){
-        int gcd = gcdByEuclidsAlgorithm(num, denom);
-        if(gcd < 0){
-            gcd *= -1;
+        int gcd = commonDenom(num, denom);
+        int mod = 1;
+        if(num < 0 && denom < 0){
+            mod = -1;
+        }else if(num > 0 && denom < 0){
+            mod = -1;
         }
-        this.num = num/gcd;
-        this.denom = denom/gcd;
+        this.num = num/gcd * mod;
+        this.denom = denom/gcd * mod;
     }
 
     public int getNum() {
@@ -43,29 +46,23 @@ public class Rational {
     }
 
     public Rational add(Rational other){
-        int gcd = gcdByEuclidsAlgorithm(denom, other.getDenom());
-        int tempDenom = denom;
-        int tempNum = num;
-        int tempOtherDenom = other.getDenom();
-        int tempOtherNum = other.getNum();
-        while(tempDenom != tempOtherDenom){
-            if(tempDenom > tempOtherDenom){
-                tempOtherDenom *= gcd;
-                tempOtherNum *= gcd;
-            }else{
-                tempDenom *= gcd;
-                tempNum *= gcd;
-            }
-        }
-
-        return new Rational((tempNum + tempOtherNum), tempDenom);
+        return null;
     }
 
-    private int gcdByEuclidsAlgorithm(int n1, int n2) {
-        if (n2 == 0) {
-            return n1;
+    private int commonDenom(int n1, int n2) {
+        int gcd = 1;
+        if(n1 < 0){
+            n1 *= -1;
         }
-        return gcdByEuclidsAlgorithm(n2, n1 % n2);
+        if(n2 < 0){
+            n2 *= -1;
+        }
+        for (int i = 1; i <= n1 && i <= n2; i++) {
+            if (n1 % i == 0 && n2 % i == 0) {
+                gcd = i;
+            }
+        }
+        return gcd;
     }
 }
 
