@@ -24,11 +24,11 @@ public class Ex2TestPointTriangle {
         Point p = new Point(1, 2, 3);
         out.println(p.distance(new Point(p)) == 0);
         out.println(new Point(0, 0, 0).distance(new Point(1, 0, 0)) == 1);
-        /*
 
         // Triangle uses Points!
         Triangle t = new Triangle(new Point(0, 0, 0), new Point(0, 1, 0), new Point(1, 0, 0));
         out.println(abs(t.area() - 0.5) < 0.000001);  // Area should be 0.5
+        /*
 
         // Test data
         Point p1 = new Point(1, 1, 1);

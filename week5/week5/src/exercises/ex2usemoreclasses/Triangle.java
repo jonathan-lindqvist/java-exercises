@@ -16,6 +16,29 @@ import static java.lang.Math.sqrt;
 public class Triangle {
 
     // TODO
+    private Point cornerA;
+    private Point cornerB;
+    private Point cornerC;
+    private double sideAB;
+    private double sideAC;
+    private double sideBC;
+    private double s;
+
+    public Triangle(Point cornerA, Point cornerB, Point cornerC){
+        this.cornerA = cornerA;
+        this.cornerB = cornerB;
+        this.cornerC = cornerC;
+
+        this.sideAB = cornerA.distance(cornerB);
+        this.sideAC = cornerA.distance(cornerC);
+        this.sideBC = cornerB.distance(cornerC);
+
+        this.s = (sideAB + sideAC + sideBC) / 2.0;
+    }
+
+    public double area(){
+        return Math.sqrt(s*(s-sideAC)*(s-sideAB)*(s-sideBC));
+    }
 
 }
 

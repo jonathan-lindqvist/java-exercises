@@ -31,12 +31,12 @@ public class Point {
         this.z = other.getZ();
     }
 
-    public int distance(Point other){
+    public double distance(Point other){
         int otherX = other.getX();
         int otherY = other.getY();
         int otherZ = other.getZ();
         // Formula for distance between two point in a 3d space, return as int
-        return (int) Math.sqrt(Math.pow(otherX-x, 2) + Math.pow(otherY-y,2) + Math.pow(otherZ-z, 2));
+        return Math.sqrt(Math.pow(otherX-x, 2) + Math.pow(otherY-y,2) + Math.pow(otherZ-z, 2));
     }
 
     public int getX() {
