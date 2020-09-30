@@ -24,9 +24,14 @@ Exercises
     formula to calculate the area, See https://en.wikipedia.org/wiki/Heron%27s_formula
 
 3.  See Ex3Theory. Uncomment and answer questions. Write answer here
-    1.
-    2.
-    3.
+    1. true, false, false, true, false, false
+       First we give p3 the reference pointer of p1, so they point to the same thing.
+       Then we replace the reference pointer in p1 with the pointer of p2.
+       So they have the same value, while p3 point to a different object which got other values for x and y.
+    2. 10, The class got loads of overloaded methods, depending on what type of argument
+       we send into the method we will get a different result.
+    3. 9, and we are dealing with 5 object. Each time we call doIt it returns a new object of
+       of the same class and adds 1 to i in the argument, and then doIt is called on that object.
     4.
     5.
 

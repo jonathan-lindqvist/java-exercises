@@ -1,5 +1,5 @@
 package exercises.ex3theory;
-
+import static java.lang.System.out;
 /*
  *  More subclasses and subclasses (objects) connected
  *
@@ -16,35 +16,35 @@ public class Ex3Theory {
 
     void program() {
         //1. What will be printed? Why?
-        /*Pt p1 = new Pt();
+        Pt p1 = new Pt();
         Pt p2 = new Pt();
         Pt p3;
 
-        p1.x = 1;
-        p1.y = 2;
-        p2.x = 2 * p1.x;
-        p2.y = 2 * p1.y;
-        p3 = p1;
-        p1 = p2;
+        p1.x = 1; // x = 1
+        p1.y = 2; // y = 2
+        p2.x = 2 * p1.x; // 2*1
+        p2.y = 2 * p1.y; // 2*2
+        p3 = p1; // p3 (1,2)
+        p1 = p2; // p1(2,4)
 
-        out.println(p1 == p2);
-        out.println(p2 == p3);
-        out.println(p1 == p3);
+        out.println(p1 == p2); // true
+        out.println(p2 == p3); // false
+        out.println(p1 == p3); // false
 
-        out.println(p1.x == p2.x);
-        out.println(p2.x == p3.x);
-        out.println(p3.y == p1.y);*/
+        out.println(p1.x == p2.x); // true
+        out.println(p2.x == p3.x); // false
+        out.println(p3.y == p1.y); // false
 
         // 2. What will be printed? Why? See Mth class below
-        /*Mth m = new Mth(3);
-        m.op(1.5);
-        m.op();
-        m.op(2);
-        out.println(m.i);*/
+        Mth m = new Mth(3); // i = 3
+        m.op(1.5); // i = 4
+        m.op(); // i = 8
+        m.op(2); // i = 10
+        out.println(m.i);
 
         // 3. What will be printed? Why? How many objects are involved?
-        /*Cainc cc = new Cainc(5);
-        out.println(cc.doIt().doIt().doIt().doIt().i);*/
+        Cainc cc = new Cainc(5); // i = 5 (one object)
+        out.println(cc.doIt().doIt().doIt().doIt().i); // method return new object, does this 4 times and we already had one
 
         // 4. What will be printed? Why? How many objects are involved?
         /*CCtor c = new CCtor(new CCtor(new CCtor(8)));
