@@ -40,4 +40,12 @@ public class HangMan {
     }
 
     // TODO More here
+
+    public boolean isGamerOver(){
+        return secret.getLength() > nGuess;
+    }
+
+    public int getSecretLength(){
+        return secret.getLength();
+    }
 }

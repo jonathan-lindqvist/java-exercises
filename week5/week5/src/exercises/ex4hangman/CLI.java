@@ -19,7 +19,8 @@ public class CLI {
         new CLI().program();
     }
 
-    public static final String DEFAULT_PATH = "src/exercises/ex4hangman/words.txt";
+    // "src/exercises/ex4hangman/words.txt"
+    public static final String DEFAULT_PATH = "C:/Users/Jonathan/Documents/java-devel/övningar/week5/week5/src/exercises/ex4hangman/words.txt";
     private final String NL = System.lineSeparator();  // System independent new Line
     private final Scanner sc = new Scanner(in);
 
@@ -36,10 +37,17 @@ public class CLI {
 
         // Build OO model
         // TODO
+        hangMan = new HangMan(new Man(), new Secret(theWord));
 
-        welcomeMsg(0);   // TODO
+        out.println(theWord);
+        welcomeMsg(hangMan.getSecretLength());   // TODO
 
         // TODO The game loop
+        while(hangMan.isGamerOver()){
+            guessCharacter();
+            out.println("hello");
+
+        }
 
         // Game ended
         winMsg(hangMan.getResult(), hangMan.getNGuess(), "xxxx");  // TODO
