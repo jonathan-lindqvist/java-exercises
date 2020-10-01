@@ -32,8 +32,31 @@ Exercises
        we send into the method we will get a different result.
     3. 9, and we are dealing with 5 object. Each time we call doIt it returns a new object of
        of the same class and adds 1 to i in the argument, and then doIt is called on that object.
-    4.
-    5.
+    4. 8 will be printed, becasue the first time the constructor that takes
+       an int will be called and it sets i to the argument. Then the other two
+       will use the constructor that takes CCtor objects as arguments.
+       The constructor uses the previous i and sets it as its won i.
+       And a total of 3 objects are involved.
+    5. The first row will give error because we try to assign an instance
+       variable to a class variable. And the b does not "exist" in this context.
+
+       Row two assigns the class variable a with a new object and its instance variable b.
+
+       Row 3 then tries to assign the class variable to an instance variable that does not exist.
+       because once again we are trying to reach b from the class directly.
+
+       Row 4 creates a new object, not stored, and assign the objects instance variable with the class A variable.
+
+       Row 5 creates a new object (not stored in anything) and we use the new object to
+       access the class variable with a new object of class A instances variable b.
+
+       Row 6 Does the same as row 5 but reversed.
+
+       Row 7 does not assign the class A variable a.
+
+       Row 8 On row 2 and 5 we actually assign the class A variable with b, which get initialized as 0.
+       so it will print 0.
+
 
 
 4.  See directory ex4hangman. Implement a text based object oriented version of the Hangman game

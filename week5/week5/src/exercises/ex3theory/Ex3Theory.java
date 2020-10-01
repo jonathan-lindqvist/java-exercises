@@ -47,21 +47,18 @@ public class Ex3Theory {
         out.println(cc.doIt().doIt().doIt().doIt().i); // method return new object, does this 4 times and we already had one
 
         // 4. What will be printed? Why? How many objects are involved?
-        /*CCtor c = new CCtor(new CCtor(new CCtor(8)));
+        CCtor c = new CCtor(new CCtor(new CCtor(8)));
         out.println(c.i);
-        */
 
         // 5. Some rows will give errors. Explain!
-        /*
-        A.a = A.b;              // 1
+        // A.a = A.b;              // 1
         A.a = new A().b;        // 2
-        A.b = A.a;              // 3
+        // A.b = A.a;              // 3
         new A().b = A.a;        // 4
         new A().a = new A().b;  // 5
         new A().b = new A().a;  // 6
         A a = null;             // 7
         out.println(a.a);       // 8
-        */
     }
 
     // ---------- Classes ----------------------------
