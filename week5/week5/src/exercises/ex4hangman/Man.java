@@ -11,4 +11,8 @@ public class Man {
         return health;
     }
 
+    public void reduceHealth(){
+        health -= 1;
+    }
+
 }

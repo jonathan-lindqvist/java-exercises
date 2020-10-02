@@ -27,6 +27,12 @@ public class HangMan {
     // The game logic
     public void update(char ch) {
         // TODO
+        if(secret.isGuessInSecret(ch)){ // currently does not check if already guessed
+            secret.updateMask(ch);
+        }else{
+            man.reduceHealth();
+        }
+        incGuesses();
     }
 
     // ----- Getters used by CLI ------------------------
@@ -41,11 +47,35 @@ public class HangMan {
 
     // TODO More here
 
+    public String getSecret(){
+        return secret.getSecretWord();
+    }
+
+    public int getManHealth(){
+        return man.getHealth();
+    }
+
+    public String getSecretMask(){
+        return secret.getMask();
+    }
+
     public boolean isGamerOver(){
-        return secret.getLength() > nGuess;
+        return !secret.isWordGuessed() && man.getHealth() > 0;
+    }
+
+    public void updateResult(){
+        if(secret.isWordGuessed()){
+            result = Result.WIN;
+        }else if(man.getHealth() <= 0){
+            result = Result.LOOSE;
+        }
     }
 
     public int getSecretLength(){
         return secret.getLength();
+    }
+
+    private void incGuesses(){
+        nGuess += 1;
     }
 }

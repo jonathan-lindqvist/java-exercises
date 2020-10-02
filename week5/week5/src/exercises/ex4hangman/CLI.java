@@ -43,14 +43,20 @@ public class CLI {
         welcomeMsg(hangMan.getSecretLength());   // TODO
 
         // TODO The game loop
+        // bug were the user can enter the char '-' and nothing happens
+        // bug happens for all special chars
         while(hangMan.isGamerOver()){
-            guessCharacter();
-            out.println("hello");
+            char currentGuess = guessCharacter();
+            hangMan.update(currentGuess);
+            plotMan(hangMan.getManHealth());
+            plotMask(hangMan.getSecretMask());
 
         }
 
+        hangMan.updateResult();
+
         // Game ended
-        winMsg(hangMan.getResult(), hangMan.getNGuess(), "xxxx");  // TODO
+        winMsg(hangMan.getResult(), hangMan.getNGuess(), hangMan.getSecret());  // TODO
     }
 
     // ------------- Helpers and graphics --------------------------
