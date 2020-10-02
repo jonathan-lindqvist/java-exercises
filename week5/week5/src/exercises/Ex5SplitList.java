@@ -20,10 +20,10 @@ public class Ex5SplitList {
     void program() {
         // Will get an immutable list
         List<Integer> ints = Arrays.asList(1, 2, 3, 4);
-    /*
         List<List<Integer>> ps = partition(ints, 2);
         out.println(ps.get(0).toString().equals("[1, 2]"));
         out.println(ps.get(1).toString().equals("[3, 4]"));
+    /*
 
         ps = partition(ints, 4);
         out.println(ps.get(0).toString().equals("[1]"));
@@ -55,5 +55,12 @@ public class Ex5SplitList {
     }
 
     // --------- Methods -----------------------
-
+    private List<List<Integer>> partition(List<Integer> list, int nNumInLists){
+        List<List<Integer>> partitionList = new ArrayList<>();
+        int nLists = list.size()/nNumInLists;
+        for(int i = 0; i < nLists; i++){
+            
+        }
+        return partitionList;
+    }
 }
