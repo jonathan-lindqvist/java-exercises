@@ -59,7 +59,7 @@ public class Ex5SplitList {
         List<List<Integer>> partitionList = new ArrayList<>();
         int nLists = list.size()/nNumInLists;
         for(int i = 0; i < nLists; i++){
-            
+
         }
         return partitionList;
     }
