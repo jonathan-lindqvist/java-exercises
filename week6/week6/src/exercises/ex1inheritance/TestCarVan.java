@@ -39,7 +39,6 @@ public class TestCarVan {
     private void program() {
         Person p1 = new Person("123", "olle");
         Person p2 = new Person("456", "fia");
-        /*
         List<Vehicle> vehicles = Arrays.asList(new Car(p1, "abc", 160),
                 new Van(p2, "def", 400),
                 new Car(p2, "ghi", 210),
@@ -48,6 +47,6 @@ public class TestCarVan {
 
         for (Vehicle v : vehicles) {
             out.println(v);   // Each vehicle should know what to print!
-        }*/
+        }
     }
 }
