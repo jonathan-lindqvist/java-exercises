@@ -26,21 +26,29 @@ public class TypesAndOverride {
 
     void program() {
         // a
-        /*D d = new D();
+        D d = new D();
         C c = d;
         c.doIt();
-        */
+        /*
+        We create a new object of the D class, then we can assign the the object to a new variable because the object is
+        a subtype of C. But the pointer is still to the D object so when we run doIt it references the method in class D.
+         */
 
         // b
-        /*IY iy = new D();
+        IY iy = new D();
         C c1 = (C) iy;
         c1.doOther();
-        */
+        /*
+        We create a new object of D class, we can do this because D inherits everything from C which implements the IY interface.
+        Our object inherits the doOther method and will run it as its own, hence why we get it "DoOther D".
+         */
 
         // c
-        /*A a = new B();
+        A a = new B();
         a.doIt(1);
-        */
+        /*
+
+         */
 
         // d
         /*IX ix = new B();
@@ -100,7 +108,6 @@ public class TypesAndOverride {
         public void doIt() {
             System.out.println("Doit B");
         }
-
         public void doIt(int i) {
             System.out.println("Doit B " + i);
         }
