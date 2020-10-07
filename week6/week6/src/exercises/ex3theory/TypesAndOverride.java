@@ -47,43 +47,56 @@ public class TypesAndOverride {
         A a = new B();
         a.doIt(1);
         /*
-
+        Because the variable it is of type A it will look for the first doIt method that can handle the argument using.
          */
 
         // d
-        /*IX ix = new B();
+        IX ix = new B();
         IY iy3 = new C();
-        ix = (IX) iy3;
-        ix.doIt();
-        */
+        //ix = (IX) iy3;
+        //ix.doIt();
+        /*
+        This will fail because we are trying to cast iy3 to the type IX. C implements IY, not IX, so now they are not
+        connected.
+         */
 
         // e
-        /*A a4 = new C();
-        D d1 = (D) a4;
-        d1.doIt(1.0);
-        */
+        A a4 = new C();
+        //D d1 = (D) a4;
+        //d1.doIt(1.0);
+        /*
+        Since a4 is of type A in can be casted because everything that A has, C inherits. D inherits C and not A, so there is not direct
+        connection between them. So this will fail.
+         */
 
 
         // f
-        /*C c2 = new D();
-        B b = (B) c2;
-        */
+        C c2 = new D();
+        //B b = (B) c2;
+        /*
+        This will fail. Just because C and B both extend A does not mean they are the same, C could implement methods that A does not have
+        and therefore B cant be casted here.
+         */
 
         // g
-        /*C c3 = new C();
+        C c3 = new C();
         A a1 = c3;
-        a1.doOther();
-        */
+        //a1.doOther();
+        /*
+        Will also fail because class A does not have the doOther method, and we are "converting" c3 into type A.
+         */
 
         // h
-        /*IY iy2 = new C() {  // Anonymous subclass to C created
+        IY iy2 = new C() {  // Anonymous subclass to C created
             @Override
             public void doOther() {
                 super.doOther();
             }
         };
         iy2.doOther();
-        */
+        /*
+        Anonymous classes do not have names. So it will just print "DoOther"
+         */
 
     }
 
