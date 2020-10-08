@@ -29,8 +29,31 @@ public class Ex6ThreeSumToZero {
     }
 
     int[] getThreeSum(int[] arr){
-
-        return null;
+        int[] threeIndices = new int[3];
+        for(int i = 0; i < arr.length; i++){
+            for (int j = i+1; j < arr.length; j++){
+                int lastNum = 10-makePosifNeg(arr[i] + arr[j]);
+                int ree = Arrays.asList(arr).indexOf(lastNum); // does not work because we have int array and not Integer array
+                //out.println(ree);
+                // wtf
+                if(ree != -1 ){
+                    if(arr[ree] + arr[i] + arr[j] == 0){
+                        threeIndices[0] = i;
+                        threeIndices[1] = j;
+                        threeIndices[2] = ree;
+                        return threeIndices;
+                    }
+                }
+            }
+        }
+        return threeIndices;
+    }
+    int makePosifNeg(int i){
+        if(i < 0){
+            return -i;
+        }else{
+            return i;
+        }
     }
 
 
