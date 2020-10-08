@@ -28,32 +28,58 @@ public class Ex6ThreeSumToZero {
         out.println(Arrays.toString(getThreeSum(arr4)));    // [ 0, 1 ,3 ] or any
     }
 
-    int[] getThreeSum(int[] arr){
-        int[] threeIndices = new int[3];
-        for(int i = 0; i < arr.length; i++){
-            for (int j = i+1; j < arr.length; j++){
-                int lastNum = 10-makePosifNeg(arr[i] + arr[j]);
-                int ree = Arrays.asList(arr).indexOf(lastNum); // does not work because we have int array and not Integer array
-                //out.println(ree);
-                // wtf
-                if(ree != -1 ){
-                    if(arr[ree] + arr[i] + arr[j] == 0){
-                        threeIndices[0] = i;
-                        threeIndices[1] = j;
-                        threeIndices[2] = ree;
-                        return threeIndices;
-                    }
+    int[] getThreeSum(int[] arr) {
+
+        // fix code later, this works
+        boolean found = false;
+
+        // sort array elements
+        Arrays.sort(arr);
+
+        for (int i=0; i<n-1; i++)
+        {
+            // initialize left and right
+            int l = i + 1;
+            int r = n - 1;
+            int x = arr[i];
+            while (l < r)
+            {
+                if (x + arr[l] + arr[r] == 0)
+                {
+                    // print elements if it's sum is zero
+                    System.out.print(x + " ");
+                    System.out.print(arr[l]+ " ");
+                    System.out.println(arr[r]+ " ");
+
+                    l++;
+                    r--;
+                    found = true;
                 }
+
+                // If sum of three elements is less
+                // than zero then increment in left
+                else if (x + arr[l] + arr[r] < 0)
+                    l++;
+
+                    // if sum is greater than zero than
+                    // decrement in right side
+                else
+                    r--;
             }
         }
-        return threeIndices;
+
+        if (found == false)
+            System.out.println(" No Triplet Found");
     }
-    int makePosifNeg(int i){
-        if(i < 0){
-            return -i;
-        }else{
-            return i;
-        }
+
+    // Driven source
+    public static void main (String[] args) {
+
+        int arr[] = {0, -1, 2, -3, 1};
+        int n =arr.length;
+        findTriplets(arr, n);
+    }
+//This code is contributed by Tushil..
     }
 
 
