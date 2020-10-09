@@ -31,6 +31,7 @@ public class Ex6ThreeSumToZero {
     int[] getThreeSum(int[] arr) {
         int[] threeIndices = new int[3];
         int leftIndex,rightIndex;
+        boolean found = false;
 
         for(int i = 0; i < arr.length-2; i++){
             leftIndex = i+1;
@@ -48,8 +49,8 @@ public class Ex6ThreeSumToZero {
                 }
             }
         }
-        int[] test = new int[0];
-        return test;
+        int[] notFound = new int[0];
+        return notFound;
     }
 
 }
