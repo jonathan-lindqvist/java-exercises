@@ -29,29 +29,74 @@ public class Ex7LCRSimulation {
 
         // TODO Runt the simulation
         boolean gameOver = false;
-        while(!gameOver){
-            String[] diceForActual = roll3dices();
-            out.println(Arrays.toString(diceForActual));
-            // TODO
-            /*
-            Give chips to other players depending on dice rolls
-            check for winner
-            update actual
-             */
+        int temp = 5;
+        while(temp > 0){
+            char[] diceForActual = roll3dices(); // should roll amount of dices depending on amount of chips
+            //out.println(Arrays.toString(diceForActual));
+            updateHands(actual, diceForActual, players);
+            displayState(actual, diceForActual, players);
+            gameOver = checkForWinner(players);
+            actual = updateActual(actual, players); //should skip if a players got 0 chips
+            temp--;
         }
     }
+
+
 
     // ---- Logical methods -----------------
 
     // TODO
-    String[] roll3dices(){
-        String[] dice = {".", ".", ".", "L", "C", "R"};
-        String first = dice[rand.nextInt(dice.length)];
-        String second = dice[rand.nextInt(dice.length)];
-        String third = dice[rand.nextInt(dice.length)];
-        String[] playersHand = {first, second, third};
+    char[] roll3dices(){
+        char[] dice = {'.', '.', '.', 'L', 'C', 'R'};
+        char first = dice[rand.nextInt(dice.length)];
+        char second = dice[rand.nextInt(dice.length)];
+        char third = dice[rand.nextInt(dice.length)];
+        char[] playersHand = {first, second, third};
         return playersHand;
 
+    }
+
+    private void updateHands(Player actual, char[] diceForActual, Player[] players) {
+        int index = indexOfActual(actual, players);
+        for(char c : diceForActual){
+            if(c == 'L'){
+                players[(index-1%players.length-1)*-1].chips++;
+                actual.chips--;
+            }else if(c == 'R'){
+                players[index+1%players.length-1].chips++;
+                actual.chips--;
+            }else if(c == 'C'){
+                actual.chips--;
+            }
+        }
+    }
+
+    private boolean checkForWinner(Player[] players) {
+        int playersWithNoChips = 0;
+        for(Player p : players){
+            if(p.chips == 0){
+                playersWithNoChips++;
+            }
+        }
+            return playersWithNoChips == players.length - 1;
+    }
+
+    private Player updateActual(Player actual, Player[] players) {
+        int index = indexOfActual(actual, players);
+        int test = (index+1%players.length-1);
+        int test2 = 1%2;
+        return players[index+1% players.length]; // this makes no sense what so ever!!!!!!
+        //TODO FIX
+        //reee
+    }
+
+    private int indexOfActual(Player actual, Player[] players) {
+        for(int i = 0; i < players.length; i++){
+            if(actual.equals(players[i])){
+                return i;
+            }
+        }
+        return -1;
     }
 
     // --- IO methods ------------------
