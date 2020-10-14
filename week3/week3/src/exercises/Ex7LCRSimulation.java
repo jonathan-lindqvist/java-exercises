@@ -29,15 +29,12 @@ public class Ex7LCRSimulation {
 
         // TODO Runt the simulation
         boolean gameOver = false;
-        int temp = 5;
-        while(temp > 0){
-            char[] diceForActual = roll3dices(); // should roll amount of dices depending on amount of chips
-            //out.println(Arrays.toString(diceForActual));
+        while(!gameOver){
+            char[] diceForActual = rollDices(actual);
             updateHands(actual, diceForActual, players);
             displayState(actual, diceForActual, players);
             gameOver = checkForWinner(players);
-            actual = updateActual(actual, players); //should skip if a players got 0 chips
-            temp--;
+            actual = updateActual(actual, players);
         }
     }
 
@@ -46,13 +43,15 @@ public class Ex7LCRSimulation {
     // ---- Logical methods -----------------
 
     // TODO
-    char[] roll3dices(){
+    char[] rollDices(Player actual){
         char[] dice = {'.', '.', '.', 'L', 'C', 'R'};
-        char first = dice[rand.nextInt(dice.length)];
-        char second = dice[rand.nextInt(dice.length)];
-        char third = dice[rand.nextInt(dice.length)];
-        char[] playersHand = {first, second, third};
-        return playersHand;
+        int times = Math.min(actual.chips, 3);
+        StringBuilder rolls = new StringBuilder();
+        while(times>0){
+            rolls.append(dice[rand.nextInt(dice.length)]);
+            times--;
+        }
+        return rolls.toString().toCharArray();
 
     }
 
@@ -87,7 +86,12 @@ public class Ex7LCRSimulation {
 
     private Player updateActual(Player actual, Player[] players) {
         int index = indexOfActual(actual, players);
-        return players[(index+1)% players.length];  // makes sense now.... (parenthesis are important)
+        Player newActual = players[(index+1)% players.length];
+        while(newActual.chips == 0){
+            index++;
+            newActual = players[(index+1)% players.length];
+        }
+        return newActual;
     }
 
     private int indexOfActual(Player actual, Player[] players) {
