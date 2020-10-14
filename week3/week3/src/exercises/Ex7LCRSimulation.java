@@ -60,10 +60,14 @@ public class Ex7LCRSimulation {
         int index = indexOfActual(actual, players);
         for(char c : diceForActual){
             if(c == 'L'){
-                players[(index-1%players.length-1)*-1].chips++;
+                if(index == 0){
+                    players[players.length-1].chips++;
+                }else{
+                    players[index-1].chips++;
+                }
                 actual.chips--;
             }else if(c == 'R'){
-                players[index+1%players.length-1].chips++;
+                players[(index+1)%players.length].chips++;
                 actual.chips--;
             }else if(c == 'C'){
                 actual.chips--;
@@ -83,11 +87,7 @@ public class Ex7LCRSimulation {
 
     private Player updateActual(Player actual, Player[] players) {
         int index = indexOfActual(actual, players);
-        int test = (index+1%players.length-1);
-        int test2 = 1%2;
-        return players[index+1% players.length]; // this makes no sense what so ever!!!!!!
-        //TODO FIX
-        //reee
+        return players[(index+1)% players.length];  // makes sense now.... (parenthesis are important)
     }
 
     private int indexOfActual(Player actual, Player[] players) {
