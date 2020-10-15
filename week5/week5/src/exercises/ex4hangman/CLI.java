@@ -35,16 +35,11 @@ public class CLI {
             exit(0);
         }
 
-        // Build OO model
-        // TODO
         hangMan = new HangMan(new Man(), new Secret(theWord));
 
-        out.println(theWord);
-        welcomeMsg(hangMan.getSecretLength());   // TODO
+        // out.println(theWord);
+        welcomeMsg(hangMan.getSecretLength());
 
-        // TODO The game loop
-        // bug were the user can enter the char '-' and nothing happens
-        // bug happens for all special chars
         while(hangMan.isGamerOver()){
             char currentGuess = guessCharacter();
             hangMan.update(currentGuess);
@@ -56,7 +51,7 @@ public class CLI {
         hangMan.updateResult();
 
         // Game ended
-        winMsg(hangMan.getResult(), hangMan.getNGuess(), hangMan.getSecret());  // TODO
+        winMsg(hangMan.getResult(), hangMan.getNGuess(), hangMan.getSecret());
     }
 
     // ------------- Helpers and graphics --------------------------
@@ -78,7 +73,7 @@ public class CLI {
         while (true) {
             out.print("Enter a char > ");
             input = sc.nextLine();
-            if (input.length() == 1 && Character.isLetter(input.charAt(0))) {
+            if (input.length() == 1 && (Character.isLetter(input.charAt(0)) || input.matches("[^A-Za-z0-9 ]"))) {
                 break;
             }
         }
