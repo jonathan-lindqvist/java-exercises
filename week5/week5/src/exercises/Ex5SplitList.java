@@ -23,7 +23,6 @@ public class Ex5SplitList {
         List<List<Integer>> ps = partition(ints, 2);
         out.println(ps.get(0).toString().equals("[1, 2]"));
         out.println(ps.get(1).toString().equals("[3, 4]"));
-    /*
 
         ps = partition(ints, 4);
         out.println(ps.get(0).toString().equals("[1]"));
@@ -39,6 +38,7 @@ public class Ex5SplitList {
         ps = partition(ints, 2);
         out.println(ps.get(0).toString().equals("[1, 2]"));
         out.println(ps.get(1).toString().equals("[3, 4, 5]"));
+    /*
 
         ps = partition(ints, 3);
         out.println(ps.get(0).toString().equals("[1]"));
@@ -55,12 +55,31 @@ public class Ex5SplitList {
     }
 
     // --------- Methods -----------------------
-    private List<List<Integer>> partition(List<Integer> list, int nNumInLists){
-        List<List<Integer>> partitionList = new ArrayList<>();
-        int nLists = list.size()/nNumInLists;
-        for(int i = 0; i < nLists; i++){
 
+    //TODO
+    // wrong interpretation of the second argument, is not nNumInLists, it is nOfLists
+    private List<List<Integer>> partition(List<Integer> list, int nNumInLists){
+        List<Integer> newList = new ArrayList<>(list);
+        List<List<Integer>> partitionList = new ArrayList<>();
+        int times = list.size()/nNumInLists;
+
+        while(!newList.isEmpty()){
+            if(nNumInLists > newList.size()){
+                int lastListIndex = partitionList.size() - 1;
+                for(Integer i : newList){
+                    partitionList.get(lastListIndex).add(i);
+                }
+            }
+
+            List<Integer> tempList = new ArrayList<>();
+            for(int i = 0; i < times;i++){
+                tempList.add(newList.get(i));
+            }
+
+            partitionList.add(tempList);
+            newList.removeAll(tempList);
         }
+
         return partitionList;
     }
 }
