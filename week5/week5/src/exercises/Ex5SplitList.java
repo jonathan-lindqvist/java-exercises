@@ -38,7 +38,6 @@ public class Ex5SplitList {
         ps = partition(ints, 2);
         out.println(ps.get(0).toString().equals("[1, 2]"));
         out.println(ps.get(1).toString().equals("[3, 4, 5]"));
-    /*
 
         ps = partition(ints, 3);
         out.println(ps.get(0).toString().equals("[1]"));
@@ -50,34 +49,33 @@ public class Ex5SplitList {
         out.println(ps.get(0).toString().equals("[1, 2]"));
         out.println(ps.get(1).toString().equals("[3, 4]"));
         out.println(ps.get(2).toString().equals("[5, 6, 7]"));
-    */
 
     }
 
     // --------- Methods -----------------------
 
-    //TODO
-    // wrong interpretation of the second argument, is not nNumInLists, it is nOfLists
-    private List<List<Integer>> partition(List<Integer> list, int nNumInLists){
+    private List<List<Integer>> partition(List<Integer> list, int numOfLists){
         List<Integer> newList = new ArrayList<>(list);
         List<List<Integer>> partitionList = new ArrayList<>();
-        int times = list.size()/nNumInLists;
+        double times = Math.floor(list.size()/numOfLists);
 
         while(!newList.isEmpty()){
-            if(nNumInLists > newList.size()){
+            if(times > newList.size()){
                 int lastListIndex = partitionList.size() - 1;
                 for(Integer i : newList){
                     partitionList.get(lastListIndex).add(i);
                 }
-            }
+                newList.clear();
+            }else{
+                List<Integer> tempList = new ArrayList<>();
+                for(int i = 0; i < times;i++){
+                    tempList.add(newList.get(i));
+                }
 
-            List<Integer> tempList = new ArrayList<>();
-            for(int i = 0; i < times;i++){
-                tempList.add(newList.get(i));
+                times = Math.round(list.size() / (double)numOfLists); // hacky solution to get the smaller list in the beginning and bigger later
+                partitionList.add(tempList);
+                newList.removeAll(tempList);
             }
-
-            partitionList.add(tempList);
-            newList.removeAll(tempList);
         }
 
         return partitionList;
