@@ -26,7 +26,6 @@ public class Ex6Grouping {
         // Method will group all Points into list depending on row values
         // I.e. all Points with row = 2 in same list, etc.
         // Row is the key and the list containing all pair with row =2 is the value
-        /*
         Map<Integer, List<Position>> rowPositions = groupByRowValue(ps);
 
         // Checking
@@ -40,13 +39,26 @@ public class Ex6Grouping {
             b = b && (p.row == 2);
         }
         out.println("All rows with 4: " + b);
-
-         */
+        
     }
 
     // -------- Methods --------------------
 
-    // TODO
+    Map<Integer, List<Position>> groupByRowValue(List<Position> list){
+        Map<Integer, List<Position>> hashPos = new HashMap<>();
+        while(!list.isEmpty()){
+            List<Position> temp = new ArrayList<>();
+            int rowIndex = list.get(0).row;
+            for(Position pos : list){
+                if(pos.row == rowIndex){
+                    temp.add(pos);
+                }
+            }
+            hashPos.put(rowIndex, temp);
+            list.removeAll(temp);
+        }
+        return hashPos;
+    }
 
     // Utility method, some "random" Points
     // (0,-3), (0, -2) ... (0, 2)
